@@ -4,17 +4,27 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "sqlite3": "^5.0.2",
+    "@hapi/boom": "^9.1.2",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "sequelize": "^6.6.2"
+    "joi": "^17.4.0",
+    "sequelize": "^6.6.2",
+    "sqlite3": "^5.0.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watchmode": "./node_modules/.bin/nodemon main.js",
+    "drop_data": "npx sequelize db:seed:undo",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:seed": "npx sequelize db:seed:all"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^7.24.0",
+    "install": "^0.13.0",
+    "nodemon": "^2.0.7",
     "sequelize-cli": "^6.2.0"
   }
 }

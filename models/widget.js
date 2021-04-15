@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Widget extends Model {
     /**
@@ -10,12 +8,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
-      Widget.hasOne(models.Brand, {
-        foreignKey: 'brandId'
-      });
+      Widget.belongsTo(models.Brand, { foreignKey: 'brandId', onDelete: 'CASCADE' });
     }
-  };
+  }
   Widget.init({
     id: {
       type: DataTypes.UUID,
@@ -26,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     quantity: DataTypes.INTEGER,
     name: DataTypes.STRING,
+    brandId: DataTypes.UUID
   }, {
     sequelize,
     modelName: 'Widget',

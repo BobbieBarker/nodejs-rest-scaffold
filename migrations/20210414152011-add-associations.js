@@ -7,7 +7,8 @@ module.exports = {
         model: 'Brands',
         key: 'id'
       },
-      allowNull: false
+      allowNull: false,
+      onDelete: 'CASCADE'
     });
   },
   down: async (queryInterface, Sequelize) => {

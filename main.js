@@ -1,8 +1,8 @@
+const bodyParser = require('body-parser')
 const express = require('express')
 const app = express()
 const port = 3000
-const db = require('./models');
-
+const routes = require('./lib/routes')
 /**
  * To initialize the database schema
  * ```
@@ -20,10 +20,11 @@ const db = require('./models');
  * ```
  * npx sequelize db:seed:undo
  */
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.use('/brands', routes.brands)
+app.use('/widgets', routes.widgets)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
